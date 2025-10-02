@@ -101,16 +101,8 @@ roslaunch my_arm_controller arm_control.launch
 
 ## 🎥 系统演示
 
-### 测试1：原始链接
-![测试1](https://raw.githubusercontent.com/Jixing424/Panda_Stereo_Grasp/main/show.gif)
+### 
+![演示视频](https://github.com/Jixing424/Panda_Stereo_Grasp/raw/main/show.gif)
 
-### 测试2：HTML 标签
-<img src="https://raw.githubusercontent.com/Jixing424/Panda_Stereo_Grasp/main/show.gif" width="600">
-
-### 测试3：GitHub 链接
-![测试3](https://github.com/Jixing424/Panda_Stereo_Grasp/raw/main/show.gif)
-
-### 测试4：直接链接
-直接访问：[查看GIF](https://raw.githubusercontent.com/Jixing424/Panda_Stereo_Grasp/main/show.gif)
 
 
