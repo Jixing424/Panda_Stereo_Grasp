@@ -1,6 +1,6 @@
 # 🦾 基于双目相机的二维码识别与 Panda 机械臂抓取系统
 
-本项目实现了一个完整的基于 **ROS** 与 **MoveIt!** 的视觉抓取系统。  
+本项目实现了一个完整的基于 **ROS NOETIC** 与 **MoveIt!** 的视觉抓取系统。  
 系统使用 **双目相机** 获取贴有二维码的三个物块的空间位置信息，将坐标发布为 ROS 话题，最后由 **Panda 机械臂** 自动移动至目标位置并完成抓取任务。
 
 ---
@@ -102,7 +102,7 @@ roslaunch my_arm_controller arm_control.launch
 ## 🎥 系统演示
 
 ### 完整工作流程演示
-![系统运行演示](https://raw.githubusercontent.com/Jixing424/Panda_Stereo_Grasp/main/show.gif)
+见bilibili 
 
 
 
