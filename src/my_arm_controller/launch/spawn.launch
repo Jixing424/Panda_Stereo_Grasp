@@ -1,0 +1,40 @@
+<launch>
+
+  <!-- 加载模型 -->
+  <node name="spawn_table" pkg="gazebo_ros" type="spawn_model" 
+        args="-sdf -file $(find my_arm_controller)/models/table/model.sdf -model table -x 0.7 -y 0.0 -z 0.0"
+        output="screen"/>
+
+  <node name="spawn_box1" pkg="gazebo_ros" type="spawn_model" 
+        args="-sdf -file $(find my_arm_controller)/models/arm_small_box_1/model.sdf -model box1 -x 0.48 -y 0.11 -z 0.41"
+        output="screen"
+        depends="spawn_table"/>
+
+  <node name="spawn_box2" pkg="gazebo_ros" type="spawn_model" 
+        args="-sdf -file $(find my_arm_controller)/models/arm_small_box_2/model.sdf -model box2 -x 0.48 -y 0.0 -z 0.41"
+        output="screen"
+        depends="spawn_table"/>
+
+  <node name="spawn_box3" pkg="gazebo_ros" type="spawn_model" 
+        args="-sdf -file $(find my_arm_controller)/models/arm_small_box_3/model.sdf -model box3 -x 0.48 -y -0.11 -z 0.41"
+        output="screen"
+        depends="spawn_table"/>
+
+  <node name="spawn_stereo_camera" pkg="gazebo_ros" type="spawn_model"
+        args="-sdf -file $(find my_arm_controller)/models/stereo_camera/model.sdf -model stereo_camera -x 0.2 -y 0.0 -z 0.4 -R 0 -P 0 -Y -0.0"
+        output="screen" 
+        depends="spawn_table"/>
+
+  <node pkg="tf2_ros" type="static_transform_publisher" name="camera_base_tf" args="0.2 0.1 0.4 0 0 0 world camera_base"/>
+
+
+  <!-- 启动二维码识别节点 -->
+  <node name="get_deep_info" pkg="my_arm_controller" type="get_deep_info.py" output="screen">
+    <!-- 强制使用虚拟环境的Python解释器 -->
+    <env name="PYTHON_EXECUTABLE" value="/home/lwz/arm_ws/venv/bin/python3" />
+    <!-- 添加虚拟环境的site-packages到PYTHONPATH -->
+    <env name="PYTHONPATH" value="/home/lwz/arm_ws/venv/lib/python3.8/site-packages:$(env PYTHONPATH)" />
+  </node>
+
+</launch>
+

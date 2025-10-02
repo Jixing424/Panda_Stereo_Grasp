@@ -1,0 +1,184 @@
+<?xml version='1.0'?>
+<sdf version='1.7'>
+  <model name='arm_small_box'>
+    <link name='link_0'>
+      <inertial>
+        <mass>0.0216</mass>  <!-- 质量按体积比例缩小 (0.1kg * 6^3/10^3) -->
+        <inertia>
+          <ixx>0.001296</ixx>  <!-- 惯性矩按比例重新计算 (原值*6^5/10^5) -->
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.001296</iyy>
+          <iyz>0</iyz>
+          <izz>0.001296</izz>
+        </inertia>
+        <pose>0 0 0 0 -0 0</pose>
+      </inertial>
+      <pose>0 0 0 0 -0 0</pose>
+      <gravity>1</gravity>
+      <self_collide>0</self_collide>
+      <kinematic>0</kinematic>
+      <enable_wind>0</enable_wind>
+      
+      <!-- X轴负方向面（左侧面，二维码面） -->
+      <visual name='left_visual'>
+        <pose>-0.03 0 0 0 -0 0</pose>  <!-- 偏移量改为6cm的一半 -->
+        <geometry>
+          <box>
+            <size>0.006 0.06 0.06</size>  <!-- 厚度0.6cm，面积6cm×6cm -->
+          </box>
+        </geometry>
+        <material>
+          <script>
+            <uri>model://arm_small_box_3/materials/scripts</uri>
+            <uri>model://arm_small_box_3/materials/textures</uri>
+            <name>QR_Material_3</name>
+          </script>
+          <texture>
+            <diffuse>model://arm_small_box_3/materials/textures/qr_003.png</diffuse>
+          </texture>
+        </material>
+      </visual>
+      
+      <!-- 其他五个面 -->
+      <!-- X轴正方向面（右侧面） -->
+      <visual name='right_visual'>
+        <pose>0.03 0 0 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.00006 0.06 0.06</size>  <!-- 厚度0.06mm -->
+          </box>
+        </geometry>
+        <material>
+          <script>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+            <name>Gazebo/Grey</name>
+          </script>
+        </material>
+      </visual>
+      
+      <!-- 前表面（Y轴正方向） -->
+      <visual name='front_visual'>
+        <pose>0 0.03 0 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.06 0.00006 0.06</size>
+          </box>
+        </geometry>
+        <material>
+          <script>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+            <name>Gazebo/Grey</name>
+          </script>
+        </material>
+      </visual>
+      
+      <!-- 后表面（Y轴负方向） -->
+      <visual name='back_visual'>
+        <pose>0 -0.03 0 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.06 0.00006 0.06</size>
+          </box>
+        </geometry>
+        <material>
+          <script>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+            <name>Gazebo/Grey</name>
+          </script>
+        </material>
+      </visual>
+      
+      <!-- 上表面（Z轴正方向） -->
+      <visual name='top_visual'>
+        <pose>0 0 0.03 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.06 0.06 0.00006</size>
+          </box>
+        </geometry>
+        <material>
+          <script>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+            <name>Gazebo/Grey</name>
+          </script>
+        </material>
+      </visual>
+      
+      <!-- 下表面（Z轴负方向） -->
+      <visual name='bottom_visual'>
+        <pose>0 0 -0.03 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.06 0.06 0.00006</size>
+          </box>
+        </geometry>
+        <material>
+          <script>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+            <name>Gazebo/Grey</name>
+          </script>
+        </material>
+      </visual>
+      
+      <!-- 碰撞元素 -->
+      <collision name='collision'>
+        <laser_retro>0</laser_retro>
+        <max_contacts>10</max_contacts>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.06 0.06 0.06</size>  <!-- 整体碰撞体积6cm立方体 -->
+          </box>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu>1</mu>
+              <mu2>1</mu2>
+              <fdir1>0 0 0</fdir1>
+              <slip1>0</slip1>
+              <slip2>0</slip2>
+            </ode>
+            <torsional>
+              <coefficient>1</coefficient>
+              <patch_radius>0</patch_radius>
+              <surface_radius>0</surface_radius>
+              <use_patch_radius>1</use_patch_radius>
+              <ode>
+                <slip>0</slip>
+              </ode>
+            </torsional>
+          </friction>
+          <bounce>
+            <restitution_coefficient>0</restitution_coefficient>
+            <threshold>1e+06</threshold>
+          </bounce>
+          <contact>
+            <collide_without_contact>0</collide_without_contact>
+            <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
+            <collide_bitmask>1</collide_bitmask>
+            <ode>
+              <soft_cfm>0</soft_cfm>
+              <soft_erp>0.2</soft_erp>
+              <kp>1e+13</kp>
+              <kd>1</kd>
+              <max_vel>0.01</max_vel>
+              <min_depth>0</min_depth>
+            </ode>
+            <bullet>
+              <split_impulse>1</split_impulse>
+              <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
+              <soft_cfm>0</soft_cfm>
+              <soft_erp>0.2</soft_erp>
+              <kp>1e+13</kp>
+              <kd>1</kd>
+            </bullet>
+          </contact>
+        </surface>
+      </collision>
+    </link>
+    <static>0</static>
+    <allow_auto_disable>1</allow_auto_disable>
+  </model>
+</sdf>

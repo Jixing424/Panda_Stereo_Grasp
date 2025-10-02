@@ -1,0 +1,25 @@
+<launch>
+  <!-- 启动 Gazebo 空世界 -->
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" value="worlds/empty.world"/>  <!-- 可替换为您的.world文件 -->
+  </include>
+
+  <!-- 加载模型 -->
+  <node name="spawn_table" pkg="gazebo_ros" type="spawn_model" 
+        args="-sdf -file $(find my_arm_controller)/models/table/model.sdf -model table -x 1.5 -y 0.0 -z 0.0"
+        output="screen"/>
+
+  <node name="spawn_box1" pkg="gazebo_ros" type="spawn_model" 
+        args="-sdf -file $(find my_arm_controller)/models/arm_small_box/model.sdf -model box1 -x 1.27 -y -0.5 -z 1.05"
+        output="screen"/>
+
+  <node name="spawn_box2" pkg="gazebo_ros" type="spawn_model" 
+        args="-sdf -file $(find my_arm_controller)/models/arm_small_box/model.sdf -model box2 -x 1.27 -y 0.0 -z 1.05"
+        output="screen"/>
+
+  <node name="spawn_box3" pkg="gazebo_ros" type="spawn_model" 
+        args="-sdf -file $(find my_arm_controller)/models/arm_small_box/model.sdf -model box3 -x 1.27 -y 0.5 -z 1.05"
+        output="screen"/>
+
+</launch>
+
