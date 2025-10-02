@@ -101,6 +101,6 @@ roslaunch my_arm_controller arm_control.launch
 
 ## 🎬 系统演示
 
-### 完整运行流程
-![演示视频](https://github.com/Jixing424/Panda_Stereo_Grasp/raw/main/show.gif)
+### 完整运行流程  
+![演示视频](https://raw.githubusercontent.com/Jixing424/Panda_Stereo_Grasp/main/show.gif)
 
