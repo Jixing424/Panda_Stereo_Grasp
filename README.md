@@ -97,4 +97,10 @@ roslaunch panda_moveit_config demo_gazebo.launch
 roslaunch my_arm_controller arm_control.launch 
 ```
 
+---
+
+## 🎬 系统演示
+
+### 完整运行流程
+![系统演示](./show.gif)
 
