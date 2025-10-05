@@ -11,6 +11,7 @@
 - [🧠 功能概述](#-功能概述)
 - [🗂️ 目录结构](#️-目录结构)
 - [🚀 运行说明](#-运行说明)
+- [🎥 系统演示](#-系统演示)
 
 ---
 
@@ -81,7 +82,7 @@ source ~/.bashrc
 ```
 
 3.修改python解释器路径   
-将/home/lwz/arm_ws/src/my_arm_controller/launch下的所有launch文件中的  
+将~/arm_ws/src/my_arm_controller/launch下的所有launch文件中的  
 ```bash
 <env name="PYTHONPATH" value="/home/lwz/arm_ws/venv/lib/python3.8/site-packages:$(env PYTHONPATH)" />
 ```
